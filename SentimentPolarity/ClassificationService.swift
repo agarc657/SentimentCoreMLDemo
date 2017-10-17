@@ -23,8 +23,13 @@ final class ClassificationService {
       }
 
       let output = try model.prediction(input: inputFeatures)
-
-      switch output.classLabel {
+        for (key, value) in output.classProbability {
+            print(key,value)
+            
+        }
+        print("Break")
+    switch output.classLabel {
+        
       case "Pos":
         return .positive
       case "Neg":

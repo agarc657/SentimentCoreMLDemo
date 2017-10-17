@@ -10,10 +10,13 @@ from sklearn.pipeline import Pipeline
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import GridSearchCV
 
+
+
 # Read reviews from CSV
 reviews = pd.read_csv('epinions.csv')
 reviews = reviews.as_matrix()[:, :]
 print "%d reviews in dataset" % len(reviews)
+print np.__version__
 
 # Create features
 def features(sentence):
@@ -50,7 +53,7 @@ print model.score(X, y)
 print "Optimized parameters: ", model
 print "Best CV score: ", gs.best_score_
 
-# Convert to CoreML model
+# # Convert to CoreML model
 coreml_model = coremltools.converters.sklearn.convert(model)
 coreml_model.author = 'Vadym Markov'
 coreml_model.license = 'MIT'
